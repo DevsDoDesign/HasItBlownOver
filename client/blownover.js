@@ -1,4 +1,6 @@
-var map;
+var map
+,	service
+;
 
 var addPoint = function(latLng, opts) {
 	opts = opts || {};
@@ -9,7 +11,21 @@ var addPoint = function(latLng, opts) {
 		position: latLng,
 		map: map,
 		title: title
-	})
+	});
+};
+
+var addPubs = function(latLng, opts) {
+	service.nearbySearch({
+		location: latLng,
+		radius: 500,
+		types: ['bar']
+	}, function(results, status) {
+		if (status == google.maps.places.PlacesServiceStatus.OK) {
+			results.forEach(function(result) {
+				addPoint(result.geometry.location);
+			});
+		}
+	});
 };
 
 Template.hello.greeting = function () {
@@ -36,11 +52,15 @@ Template.input.events({
 		geocoder.geocode({ 'address': location }, function(result, status) {
 			console.log('res', result);
 			if (status == google.maps.GeocoderStatus.OK) {
-				addPoint(result[0].geometry.location, {
+				var loc = result[0].geometry.location;
+
+				addPoint(loc, {
 					address: result[0].formatted_address,
 					message: message,
 					rating: rating
 				});
+
+				addPubs(loc);
 			}
 			else {
 				alert('Invalid Geocoder Request: '+status);
@@ -68,5 +88,7 @@ Template.map.rendered = function() {
 			rating: 8
 		});
 	}, 8000);
-}
+
+	service = new google.maps.places.PlacesService(map);
+};
 
