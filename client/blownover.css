@@ -87,6 +87,18 @@ h1 {
 	color: white;
 }
 
+#addZombie select {
+	background: #141820;
+	border: 1px solid #839FD3;
+	color: white;
+	-webkit-appearance: none;
+	padding: 5px;
+	background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4yLjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNTBweCIgaGVpZ2h0PSI3MHB4IiB2aWV3Qm94PSIwIDAgNTAgNzAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUwIDcwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwb2x5Z29uIGZpbGw9IiMyRDNFNEYiIHBvaW50cz0iNC4yMzUsMjkuMzY0IDI1LjYxNywxIDQ3LjAwMSwyOS4zNjQgIi8+DQo8cG9seWdvbiBmaWxsPSIjMkQzRTRGIiBwb2ludHM9IjQ3LjAwMSw0MC4yNDIgMjUuNjE4LDY4LjYwNSA0LjIzNCw0MC4yNDIgIi8+DQo8L3N2Zz4NCg==);
+	background-size: 8px;
+	background-position: 95% 53%;
+	background-repeat: no-repeat;	
+}
+
 #addZombie button {
 	border-radius: 3px;
 	background-color: #8B0001;
