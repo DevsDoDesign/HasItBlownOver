@@ -142,6 +142,10 @@ Template.map.rendered = function() {
 
 		Meteor.call('checkTwitter');
 
+		setInterval(function() {
+			Meteor.call('checkTwitter');
+		}, 5000);
+
 		Zombies.find().observe({
 			added: function(zombie) {
 				addZombieAttack(zombie);
