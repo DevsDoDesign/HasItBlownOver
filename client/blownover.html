@@ -24,6 +24,8 @@
   	{{> stream}}
   </div>
 
+  {{> aboutus}}
+
 </body>
 
 <template name="findPubs">
@@ -57,9 +59,16 @@
 </template>
 
 <template name="stream">	
-		{{#each zombies}}
+	{{#each zombies}}
 		<div class="stream-wrapper">
 			<p><strong>{{severity}}</strong> &ndash; {{address}}</p>
 		</div>
-		{{/each}}	
+	{{/each}}	
+	<div id="about"><a href="#">?</a></div>
+</template>
+
+<template name="aboutus">
+	<div id="aboutus"><p>Made by <a href="http://twitter.com/danharper7" target="_blank">Dan</a>, <a href="http://twitter.com/40_thieves" target="_blank">Ali</a>, <a href="http://twitter.com/_ewp" target="_blank">Ed</a> and <a href="http://twitter.com/rmlewisuk" target="_blank">Robb</a> at <a href="http://pubhack.co.uk">PubHack</a>.
+	<br><br>
+	<a href="#" id="aboutclose">(close)</a></p></div>
 </template>

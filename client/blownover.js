@@ -248,3 +248,16 @@ Template.stream.zombies = function() {
 	return Zombies.find({}, { limit: 10 });
 };
 
+Template.stream.events = {
+	'click #about a': function(e) {
+		e.preventDefault();
+		$('#aboutus').show();
+	}
+}
+
+Template.aboutus.events = {
+	'click #aboutclose': function(e) {
+		e.preventDefault();
+		$('#aboutus').hide();
+	}
+}
