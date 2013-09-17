@@ -2,6 +2,7 @@ var map
 ,	service
 ;
 
+
 var icons = {
 	'pub': 'PubPin',
 	0: 'ZombieLevel0',
@@ -21,21 +22,25 @@ var addZombieAttack = function(opts) {
 	var title = opts.address + ' - ' + opts.severity;
 	if (opts.message) title += ' - ' + opts.message;
 
-	var infowindow = new google.maps.InfoWindow({
-      content: opts.position.toString()
-	});
+	var icon = icons[opts.severity];
 
+	addPoint(opts.position, icon, title);
+};
+
+var addPoint = function(position, icon, title) {
 	var marker = new google.maps.Marker({
-		position: opts.position,
+		position: position,
 		map: map,
-		title: title,
-		icon: {
-			url: 'pins/'+icons[opts.severity]+'.png',
-		}
+		title: title || '',
+		icon: { url: 'pins/'+icon+'.png' }
 	});
 
 	google.maps.event.addListener(marker, 'click', function() {
-		infowindow.open(map,marker);
+		var infoWindow = new google.maps.InfoWindow({
+			content: title
+		});
+
+		infoWindow.open(map, marker);
 	});
 };
 
@@ -47,9 +52,7 @@ var addPubs = function(latLng, opts) {
 	}, function(results, status) {
 		if (status == google.maps.places.PlacesServiceStatus.OK) {
 			results.forEach(function(result) {
-				addZombieAttack({
-					position: result.geometry.location
-				});
+				addPoint(result.geometry.location, icons.pub, result.name);
 			});
 		}
 	});
@@ -111,7 +114,7 @@ Template.map.rendered = function() {
 		var myLatlng = new google.maps.LatLng(50.800999, -1.090736);
 		addZombieAttack({
 			position: myLatlng,
-			address: '',
+			address: '38 Edmund',
 			message: 'New Zombie Location!',
 			severity: 8
 		});
