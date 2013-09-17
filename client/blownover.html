@@ -5,7 +5,11 @@
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
 
-<body>
+<body>	
+	<div class="logo">
+	<img src="img/shaun.png" alt="">
+	<h1>Has it <br>blown over<br> yet?</h1>
+	</div>
   <div id="pubFinder">
   	{{> findPubs}}
   </div>
@@ -28,11 +32,11 @@
 
 <template name="input">
 	<p>
-		Report something:
+		There's a zombie!
 		<input type="text" placeholder="Postcode" id="input-postcode">
 		<input type="number" placeholder="Rating" id="input-rating" min="0" max="10">
 		<input type="text" placeholder="Message" id="input-message">
-		<button>Add</button>
+		<button>REPORT!</button>
 	</p>
 </template>
 
