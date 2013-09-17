@@ -1,6 +1,6 @@
 var map
 ,	service
-,	geoLocation
+,	currentGeolocationPosition
 ;
 
 Meteor.subscribe('zombies');
@@ -58,7 +58,7 @@ var addPubs = function(latLng, opts) {
 			results.forEach(function(result) {
 				addPoint(result.geometry.location, icons.pub, result.name);
 			});
-			map.setZoom(14);
+			map.setZoom(15);
 		}
 	});
 };
@@ -69,7 +69,7 @@ Template.hello.greeting = function () {
 
 Template.hello.events({
 	'click button' : function () {
-		addPubs(new google.maps.LatLng(50.800999, -1.090736));
+		addPubs(currentGeolocationPosition);
 	}
 });
 
@@ -109,10 +109,10 @@ Template.map.rendered = function() {
 	var self = this;
 
 	navigator.geolocation.getCurrentPosition(function(location) {
-		geoLocation = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
+		currentGeolocationPosition = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
 
 		var mapOptions = {
-			center: geoLocation,
+			center: currentGeolocationPosition,
 			zoom: 15,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
@@ -120,7 +120,7 @@ Template.map.rendered = function() {
 		map = new google.maps.Map(self.find('#map'), mapOptions);
 
 		setTimeout(function() {
-			addPoint(geoLocation, null, 'You\'re here!');
+			addPoint(currentGeolocationPosition, null, 'You\'re here!');
 		}, 1000);
 
 		service = new google.maps.places.PlacesService(map);
