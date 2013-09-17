@@ -140,6 +140,8 @@ Template.map.rendered = function() {
 
 		service = new google.maps.places.PlacesService(map);
 
+		Meteor.call('checkTwitter');
+
 		Zombies.find().observe({
 			added: function(zombie) {
 				addZombieAttack(zombie);
