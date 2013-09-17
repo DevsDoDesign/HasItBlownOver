@@ -1,6 +1,28 @@
 /* CSS declarations go here */
 
 #map {
-	width: 1200px;
-	height: 400px;
+	/*width: 1200px;*/
+	/*height: 400px;*/
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
+
+#pubFinder, #addZombie {
+	position: absolute;
+	z-index: 9;
+}
+
+#pubFinder {
+	top: 0;
+	right: 0;
+	background: white;
+}
+
+#addZombie {
+	bottom: 0;
+	right: 0;
+	background: white;
 }
