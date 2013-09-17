@@ -1,4 +1,6 @@
-var map;
+var map
+,	service
+;
 
 var addZombieAttack = function(opts) {
 	var title = opts.address + ' - ' + opts.severity;
@@ -16,6 +18,22 @@ var addZombieAttack = function(opts) {
 
 	google.maps.event.addListener(marker, 'click', function() {
 		infowindow.open(map,marker);
+	});
+};
+
+var addPubs = function(latLng, opts) {
+	service.nearbySearch({
+		location: latLng,
+		radius: 500,
+		types: ['bar']
+	}, function(results, status) {
+		if (status == google.maps.places.PlacesServiceStatus.OK) {
+			results.forEach(function(result) {
+				addZombieAttack({
+					position: result.geometry.location
+				});
+			});
+		}
 	});
 };
 
@@ -50,6 +68,8 @@ Template.input.events({
 					address: result.formatted_address,
 					message: message
 				});
+
+				addPubs(result.geometry.location);
 			}
 			else {
 				alert('Invalid Geocoder Request: '+status);
@@ -78,5 +98,6 @@ Template.map.rendered = function() {
 			severity: 8
 		});
 	}, 1000);
-}
+	service = new google.maps.places.PlacesService(map);
+};
 
