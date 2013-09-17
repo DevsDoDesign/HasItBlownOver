@@ -22,7 +22,7 @@ var addZombieAttack = function(opts) {
 	if (opts.message) title += ' - ' + opts.message;
 
 	var infowindow = new google.maps.InfoWindow({
-      content: opts.position.toString()
+	  content: opts.position.toString()
 	});
 
 	var marker = new google.maps.Marker({
@@ -106,6 +106,99 @@ Template.map.rendered = function() {
 	};
 
 	map = new google.maps.Map(this.find('#map'), mapOptions);
+
+	map.set('styles', [
+		{
+			featureType: 'road',
+			elementType: 'geometry.fill',
+			stylers: [
+				{ color: '#343F53' }
+			]
+		}, {
+			featureType: 'road',
+			elementType: 'geometry.stroke',
+			stylers: [
+				{ color: '#202733' }
+			]
+		}, {
+			featureType: 'landscape',
+			elementType: 'geometry',
+			stylers: [
+				{ color: '#141820' }
+			]
+		}, {
+			featureType: 'poi',
+			elementType: 'geometry',
+			stylers: [
+				{ color: '#323D51' }
+			]
+		}, {
+			featureType: 'poi',
+			elementType: 'label.fill',
+			stylers: [
+				{ color: '#000000'}
+			]
+		}, {
+			featureType: 'poi',
+			elementType: 'label.stroke',
+			stylers: [
+				{ color: '#B3D1FF' },
+				{ visibility: 'off' }
+			]
+		}, {
+			featureType: 'transit.line',
+			elementType: 'geometry',
+			stylers: [
+				{visibility: 'off' }
+			]
+		},{
+			featureType: 'transit.line',
+			elementType: 'label',
+			stylers: [
+				{visibility: 'off' }
+			]
+		}, {
+			featureType: 'water',
+			elementType: 'geometry',
+			stylers: [
+				{ color: '#202834' }
+			]
+		}, {
+			featureType: 'water',
+			elementType: 'label',
+			stylers: [
+				{ color: '#202834' }
+			]
+		}, {
+			featureType: 'administrative',
+			elementType: 'labels.text.stroke',
+			stylers: [
+				{ color: '#000000' }
+			]
+		}, {
+			featureType: 'administrative',
+			elementType: 'labels.text.fill',
+			stylers: [
+				{ color: '#84A1D3' }
+			]
+		}, {
+			featureType: 'all',
+			elementType: 'labels.text.stroke',
+			stylers: [
+				{ color: '#000000' }
+			]
+		}, {
+			featureType: 'all',
+			elementType: 'labels.text.fill',
+			stylers: [
+				{ color: '#84A1D3' }
+			]
+		}
+	]);
+	// gradientMap = document.getElementById('map');
+	// gradientMap = $('.gm-style > ')
+	// GradientMaps.applyGradientMap(gradientMap, '#000000, #9fc2ff');
+
 
 	setTimeout(function() {
 		var myLatlng = new google.maps.LatLng(50.800999, -1.090736);

@@ -1,6 +1,18 @@
 /* CSS declarations go here */
 
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;	
+}
+
+h1 {
+	font-family: "chandler-42-regular";
+	color: #EB212E;
+}
 #map {
-	width: 1200px;
+	width: 100%;
 	height: 400px;
 }
