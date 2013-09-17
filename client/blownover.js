@@ -7,6 +7,7 @@ Meteor.subscribe('zombies');
 
 var icons = {
 	'pub': 'PubPin',
+	'current': 'CurrentPin',
 	0: 'ZombieLevel0',
 	1: 'ZombieLevel1',
 	2: 'ZombieLevel2',
@@ -134,7 +135,7 @@ Template.map.rendered = function() {
 		map = new google.maps.Map(self.find('#map'), mapOptions);
 
 		setTimeout(function() {
-			addPoint(currentGeolocationPosition, null, 'You\'re here!');
+			addPoint(currentGeolocationPosition, 'CurrentPin', 'You\'re here!');
 		}, 1000);
 
 		service = new google.maps.places.PlacesService(map);
