@@ -2,6 +2,7 @@ var map
 ,	service
 ;
 
+var Zombies = new Meteor.Collection('zombies');
 
 var icons = {
 	'pub': 'PubPin',
@@ -21,6 +22,13 @@ var icons = {
 var addZombieAttack = function(opts) {
 	var title = opts.address + ' - ' + opts.severity;
 	if (opts.message) title += ' - ' + opts.message;
+
+	// Zombies.insert({
+	// 	position: opts.position,
+	// 	severity: opts.severity,
+	// 	address: opts.address,
+	// 	message: opts.message
+	// });
 
 	var icon = icons[opts.severity];
 
@@ -63,9 +71,8 @@ Template.hello.greeting = function () {
 };
 
 Template.hello.events({
-	'click input' : function () {
-		// template data, if any, is available in 'this'
-		console.log("You pressed the button");
+	'click button' : function () {
+		addPubs(new google.maps.LatLng(50.800999, -1.090736));
 	}
 });
 
@@ -89,8 +96,6 @@ Template.input.events({
 					address: result.formatted_address,
 					message: message
 				});
-
-				addPubs(result.geometry.location);
 			}
 			else {
 				alert('Invalid Geocoder Request: '+status);
