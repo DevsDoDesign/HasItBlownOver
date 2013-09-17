@@ -58,6 +58,7 @@ var addPubs = function(latLng, opts) {
 			results.forEach(function(result) {
 				addPoint(result.geometry.location, icons.pub, result.name);
 			});
+			map.setCenter(latLng);
 			map.setZoom(15);
 		}
 	});
@@ -126,7 +127,7 @@ Template.map.rendered = function() {
 		var mapOptions = {
 			disableDefaultUI: true,
 			center: currentGeolocationPosition,
-			zoom: 15,
+			zoom: 13,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 
