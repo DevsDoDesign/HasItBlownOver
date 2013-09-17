@@ -101,7 +101,8 @@ Template.input.events({
 					},
 					severity: rating,
 					address: result.formatted_address,
-					message: message
+					message: message,
+					created: new Date().getTime(),
 				});
 
 				$location.val('');
@@ -233,5 +234,9 @@ Template.map.rendered = function() {
 		]);
 
 	});
+};
+
+Template.stream.zombies = function() {
+	return Zombies.find({}, { limit: 10 });
 };
 
