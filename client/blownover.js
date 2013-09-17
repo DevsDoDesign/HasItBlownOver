@@ -1,5 +1,6 @@
 var map
 ,	service
+,	geoLocation
 ;
 
 var Zombies = new Meteor.Collection('zombies');
@@ -107,24 +108,28 @@ Template.input.events({
 
 
 Template.map.rendered = function() {
-	console.log('OMG', this);
-	var mapOptions = {
-		center: new google.maps.LatLng(50.800999, -1.090736),
-		zoom: 12,
-		mapTypeId: google.maps.MapTypeId.ROADMAP
-	};
+	var self = this;
 
-	map = new google.maps.Map(this.find('#map'), mapOptions);
+	navigator.geolocation.getCurrentPosition(function(location) {
+		geoLocation = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
 
-	setTimeout(function() {
-		var myLatlng = new google.maps.LatLng(50.800999, -1.090736);
-		addZombieAttack({
-			position: myLatlng,
-			address: '38 Edmund',
-			message: 'New Zombie Location!',
-			severity: 8
-		});
-	}, 1000);
-	service = new google.maps.places.PlacesService(map);
+		var mapOptions = {
+			center: geoLocation,
+			zoom: 15,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+
+		map = new google.maps.Map(self.find('#map'), mapOptions);
+
+		setTimeout(function() {
+			addZombieAttack({
+				position: geoLocation,
+				address: '',
+				message: 'You\'re here!',
+				severity: 8
+			});
+		}, 1000);
+		service = new google.maps.places.PlacesService(map);
+	});
 };
 
