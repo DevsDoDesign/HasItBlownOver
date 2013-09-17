@@ -17,6 +17,7 @@ Meteor.methods({
 						var severity = text.match(/[0-9]+\/10/);
 
 						if (severity) {
+							severity = severity[0].replace('/10', '');
 							var textParts = text.split(/ [0-9]+\/10 /);
 							var postcode = textParts[0] ? textParts[0].trim() : null;
 							var message = textParts[1] ? textParts[1].trim() : null;
@@ -29,7 +30,7 @@ Meteor.methods({
 							if (geo.results[0]) {
 								Zombies.insert({
 									position: geo.results[0].geometry.location,
-									severity: severity[0],
+									severity: severity,
 									address: postcode,
 									message: message,
 									tweet_id: id
