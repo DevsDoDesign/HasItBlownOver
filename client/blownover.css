@@ -29,7 +29,15 @@ h1 {
 #pubFinder {
 	top: 0;
 	right: 0;
-	background: white;
+}
+
+#pubFinder button {
+	margin-top: 10px;
+	margin-right: 10px;
+	padding: 5px 10px;
+	background: #141820;
+	border: 1px solid #434A58;
+	color: #eee;
 }
 
 #addZombie {
