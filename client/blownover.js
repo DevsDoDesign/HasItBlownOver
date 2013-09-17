@@ -3,7 +3,7 @@ var map
 ,	geoLocation
 ;
 
-var Zombies = new Meteor.Collection('zombies');
+Meteor.subscribe('zombies');
 
 var icons = {
 	'pub': 'PubPin',
@@ -24,16 +24,11 @@ var addZombieAttack = function(opts) {
 	var title = opts.address + ' - ' + opts.severity;
 	if (opts.message) title += ' - ' + opts.message;
 
-	// Zombies.insert({
-	// 	position: opts.position,
-	// 	severity: opts.severity,
-	// 	address: opts.address,
-	// 	message: opts.message
-	// });
-
 	var icon = icons[opts.severity];
 
-	addPoint(opts.position, icon, title);
+	var position = new google.maps.LatLng(opts.position.lat, opts.position.lng);
+
+	addPoint(position, icon, title);
 };
 
 var addPoint = function(position, icon, title) {
@@ -89,11 +84,14 @@ Template.input.events({
 
 		var geocoder = new google.maps.Geocoder();
 		geocoder.geocode({ 'address': location }, function(result, status) {
-			console.log('res', result);
 			if (status == google.maps.GeocoderStatus.OK) {
 				result = result[0];
-				addZombieAttack({
-					position: result.geometry.location,
+
+				Zombies.insert({
+					position: {
+						lat: result.geometry.location.ob,
+						lng: result.geometry.location.pb
+					},
 					severity: rating,
 					address: result.formatted_address,
 					message: message
@@ -121,15 +119,13 @@ Template.map.rendered = function() {
 
 		map = new google.maps.Map(self.find('#map'), mapOptions);
 
-		setTimeout(function() {
-			addZombieAttack({
-				position: geoLocation,
-				address: '',
-				message: 'You\'re here!',
-				severity: 8
-			});
-		}, 1000);
 		service = new google.maps.places.PlacesService(map);
+
+		Zombies.find().observe({
+			added: function(zombie) {
+				addZombieAttack(zombie);
+			}
+		});
 	});
 };
 
