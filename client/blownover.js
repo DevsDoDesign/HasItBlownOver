@@ -62,6 +62,7 @@ var addPubs = function(latLng, opts) {
 			results.forEach(function(result) {
 				addPoint(result.geometry.location, icons.pub, result.name);
 			});
+			map.setZoom(14);
 		}
 	});
 };
