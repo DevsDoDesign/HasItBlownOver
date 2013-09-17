@@ -67,6 +67,6 @@ Template.map.rendered = function() {
 			message: 'New Zombie Location!',
 			rating: 8
 		});
-	}, 8000);
+	}, 1000);
 }
 
