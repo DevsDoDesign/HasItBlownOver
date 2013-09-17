@@ -41,7 +41,7 @@ var addPoint = function(position, icon, title) {
 		position: position,
 		map: map,
 		title: title || '',
-		icon: { url: 'pins/'+icon+'.png' }
+		icon: icon ? { url: 'pins/'+icon+'.png' } : null
 	});
 
 	google.maps.event.addListener(marker, 'click', function() {
@@ -122,12 +122,7 @@ Template.map.rendered = function() {
 		map = new google.maps.Map(self.find('#map'), mapOptions);
 
 		setTimeout(function() {
-			addZombieAttack({
-				position: geoLocation,
-				address: '',
-				message: 'You\'re here!',
-				severity: 8
-			});
+			addPoint(geoLocation, null, 'You\'re here!');
 		}, 1000);
 		service = new google.maps.places.PlacesService(map);
 	});
