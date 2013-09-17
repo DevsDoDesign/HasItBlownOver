@@ -46,12 +46,13 @@ h1 {
 
 
 #pubFinder {
-	top: 0;
+	bottom: 0;
 	right: 0;
+	z-index: 11;
 }
 
 #pubFinder button {
-	margin-top: 10px;
+	margin-bottom: 20px;
 	margin-right: 10px;
 	padding: 5px 10px;
 	background: #141820;
@@ -59,17 +60,10 @@ h1 {
 	color: #eee;
 }
 
-#stream {
-	background: white;
-	position: absolute;
-	left: 0;
-	top: 0;
-}
-
 #addZombie {
 	bottom: 0;
 	right: 0;
-	background: rgba(0, 0, 0, 0.7);
+	background: #0A0C0F;
 	border-top: 2px solid rgba(131,159,211,0.3);
 	left: 0;
 	padding: 20px;
@@ -107,4 +101,34 @@ h1 {
 	font-weight: bold;
 	padding: 6px 12px;
 	margin-left: 10px;
+}
+
+#stream {
+	position: absolute;
+	right: 0;
+	width: 280px;
+	top: 0;
+	bottom: 67px;
+	z-index: 12;
+	font-family: helvetica;
+	color: white;
+	font-size: 12px;
+	padding: 0 20px;
+	background: rgba(0, 0, 0, 0.7);
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+.stream-wrapper {
+	margin: 5px 0;
+}
+
+.stream-wrapper strong {
+	font-family: "chandler-42-regular";
+	background-color: #8B0001;
+	padding: 18px 10px 11px 10px;
+	line-height: 0;
+	display: inline-block;
+	border-radius: 50%;
+	vertical-align: middle;	
 }

@@ -56,8 +56,10 @@
 	<div id="map"></div>
 </template>
 
-<template name="stream">
-	{{#each zombies}}
-		<p><strong>{{severity}}</strong> &ndash; {{address}}</p>
-	{{/each}}
+<template name="stream">	
+		{{#each zombies}}
+		<div class="stream-wrapper">
+			<p><strong>{{severity}}</strong> &ndash; {{address}}</p>
+		</div>
+		{{/each}}	
 </template>
