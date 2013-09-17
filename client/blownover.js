@@ -63,11 +63,11 @@ var addPubs = function(latLng, opts) {
 	});
 };
 
-Template.hello.greeting = function () {
-	return "Welcome to blownover.";
-};
+// Template.hello.greeting = function () {
+// 	return "Welcome to blownover.";
+// };
 
-Template.hello.events({
+Template.findPubs.events({
 	'click button' : function () {
 		addPubs(currentGeolocationPosition);
 	}
@@ -77,10 +77,17 @@ Template.hello.events({
 Template.input.events({
 	'click button': function() {
 		console.log('add', this);
-		var location, rating, message;
-		location = $('#input-postcode').val();
-		rating = parseInt($('#input-rating').val(), 10) || 1;
-		message = $('#input-message').val();
+
+		var $location = $('#input-postcode'),
+			$rating = $('#input-rating'),
+			$message = $('#input-message');
+
+		var location = $location.val(),
+			rating = parseInt($rating.val(), 10),
+			message = $message.val();
+
+		if ( ! location) return alert('Please provide a postcode of the attack');
+		if (isNaN(rating)) return alert('Please provide the severity level');
 
 		var geocoder = new google.maps.Geocoder();
 		geocoder.geocode({ 'address': location }, function(result, status) {
@@ -96,6 +103,10 @@ Template.input.events({
 					address: result.formatted_address,
 					message: message
 				});
+
+				$location.val('');
+				$rating.val('');
+				$message.val('');
 			}
 			else {
 				alert('Invalid Geocoder Request: '+status);
