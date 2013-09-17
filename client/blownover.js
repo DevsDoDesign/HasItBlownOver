@@ -34,6 +34,7 @@ var addZombieAttack = function(opts) {
 	var icon = icons[opts.severity];
 
 	addPoint(opts.position, icon, title);
+	$('input').val('');
 };
 
 var addPoint = function(position, icon, title) {
