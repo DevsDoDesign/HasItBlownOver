@@ -21,10 +21,29 @@ h1 {
 	left: 0;
 }
 
+.logo {
+	z-index: 10;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.logo img {
+	max-width: 200px;
+}
+
+.logo h1 {
+	font-size: 24px;
+	text-align: center;
+	color: #8B0001;	
+	-webkit-text-stroke-width: 1px;
+   -webkit-text-stroke-color: black;
+}
+
 #pubFinder, #addZombie {
 	position: absolute;
 	z-index: 9;
 }
+
 
 #pubFinder {
 	top: 0;
@@ -43,5 +62,29 @@ h1 {
 #addZombie {
 	bottom: 0;
 	right: 0;
-	background: white;
+	background: rgba(0, 0, 0, 0.7);
+	border-top: 2px solid rgba(131,159,211,0.3);
+	left: 0;
+	padding: 20px;
+	color: #839FD3;
+	font-family: helvetica;
+}
+
+#addZombie input {
+	padding: 5px 8px;
+	background-color: #141820;
+	border: 1px solid #839FD3;
+	border-radius: 3px;
+	margin-left: 10px;
+	min-width: 150px;
+}
+
+#addZombie button {
+	border-radius: 3px;
+	background-color: #8B0001;
+	border: none;
+	color: white;
+	font-weight: bold;
+	padding: 6px 12px;
+	margin-left: 10px;
 }

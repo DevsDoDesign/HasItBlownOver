@@ -1,12 +1,16 @@
 <head>
   <title>blownover</title>
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=places&sensor=false"></script>
-  <script type="text/javascript" src="gradientmap.min.js"></script>
+ 
   <script type="text/javascript" src="//use.typekit.net/qaq5itq.js"></script>
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
 
-<body>
+<body>	
+	<div class="logo">
+	<img src="img/shaun.png" alt="">
+	<h1>Has it <br>blown over<br> yet?</h1>
+	</div>
   <div id="pubFinder">
   	{{> findPubs}}
   </div>
@@ -29,7 +33,7 @@
 		<input type="text" placeholder="Postcode" id="input-postcode">
 		<input type="number" placeholder="Rating" id="input-rating" min="0" max="10">
 		<input type="text" placeholder="Message" id="input-message">
-		<button>Add</button>
+		<button>REPORT!</button>
 	</p>
 </template>
 
