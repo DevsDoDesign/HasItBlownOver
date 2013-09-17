@@ -1,5 +1,20 @@
 var map;
 
+var icons = {
+	'pub': 'PubPin',
+	0: 'ZombieLevel0',
+	1: 'ZombieLevel1',
+	2: 'ZombieLevel2',
+	3: 'ZombieLevel3',
+	4: 'ZombieLevel4',
+	5: 'ZombieLevel5',
+	6: 'ZombieLevel6',
+	7: 'ZombieLevel7',
+	8: 'ZombieLevel8',
+	9: 'ZombieLevel9',
+	10: 'ZombieLevel10'
+};
+
 var addZombieAttack = function(opts) {
 	var title = opts.address + ' - ' + opts.severity;
 	if (opts.message) title += ' - ' + opts.message;
@@ -7,7 +22,10 @@ var addZombieAttack = function(opts) {
 	return new google.maps.Marker({
 		position: opts.position,
 		map: map,
-		title: title
+		title: title,
+		icon: {
+			url: 'pins/'+icons[opts.severity]+'.png',
+		}
 	});
 };
 
