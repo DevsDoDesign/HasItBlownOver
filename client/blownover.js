@@ -4,10 +4,18 @@ var addZombieAttack = function(opts) {
 	var title = opts.address + ' - ' + opts.severity;
 	if (opts.message) title += ' - ' + opts.message;
 
-	return new google.maps.Marker({
+	var infowindow = new google.maps.InfoWindow({
+      content: opts.position.toString()
+	});
+
+	var marker = new google.maps.Marker({
 		position: opts.position,
 		map: map,
 		title: title
+	});
+
+	google.maps.event.addListener(marker, 'click', function() {
+		infowindow.open(map,marker);
 	});
 };
 
