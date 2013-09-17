@@ -6,6 +6,8 @@
 <body>
   {{> hello}}
 
+  {{> input}}
+
   {{> map}}
 
 </body>
@@ -14,6 +16,16 @@
   <h1>Hello World!</h1>
   {{greeting}}
   <input type="button" value="Click" />
+</template>
+
+<template name="input">
+	<p>
+		Report something:
+		<input type="text" placeholder="Postcode" id="input-postcode">
+		<input type="number" placeholder="Rating" id="input-rating" min="0" max="10">
+		<input type="text" placeholder="Message" id="input-message">
+		<button>Add</button>
+	</p>
 </template>
 
 <template name="map">
