@@ -123,6 +123,7 @@ Template.map.rendered = function() {
 		currentGeolocationPosition = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
 
 		var mapOptions = {
+			disableDefaultUI: true,
 			center: currentGeolocationPosition,
 			zoom: 15,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
