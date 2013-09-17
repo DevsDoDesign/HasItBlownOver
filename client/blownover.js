@@ -1,15 +1,14 @@
 var map;
 
-var addPoint = function(latLng, opts) {
-	opts = opts || {};
-
-	var title = opts.address + ' - ' + opts.rating + ' - ' + opts.message;
+var addZombieAttack = function(opts) {
+	var title = opts.address + ' - ' + opts.severity;
+	if (opts.message) title += ' - ' + opts.message;
 
 	return new google.maps.Marker({
-		position: latLng,
+		position: opts.position,
 		map: map,
 		title: title
-	})
+	});
 };
 
 Template.hello.greeting = function () {
@@ -36,10 +35,12 @@ Template.input.events({
 		geocoder.geocode({ 'address': location }, function(result, status) {
 			console.log('res', result);
 			if (status == google.maps.GeocoderStatus.OK) {
-				addPoint(result[0].geometry.location, {
-					address: result[0].formatted_address,
-					message: message,
-					rating: rating
+				result = result[0];
+				addZombieAttack({
+					position: result.geometry.location,
+					severity: rating,
+					address: result.formatted_address,
+					message: message
 				});
 			}
 			else {
@@ -62,10 +63,11 @@ Template.map.rendered = function() {
 
 	setTimeout(function() {
 		var myLatlng = new google.maps.LatLng(50.800999, -1.090736);
-		addPoint(myLatlng, {
+		addZombieAttack({
+			position: myLatlng,
 			address: '',
 			message: 'New Zombie Location!',
-			rating: 8
+			severity: 8
 		});
 	}, 1000);
 }
