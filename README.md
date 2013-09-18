@@ -6,5 +6,5 @@ We collate Twitter reports of zombie outbreaks (using the hashtag `#pompeyzombie
 
 And in true Shaun of the Dead style, we have a button to show the near-by pubs where you can "wait for this to blow over".
 
-Made by [Dan Harper](https://github.com/danharper7), [Ali Smith](https://github.com/40thieves], [Ed Poole](https://github.com/edpoole) and [Robb Lewis](https://github.com/rmlewisuk).
+Made by [Dan Harper](https://github.com/danharper7), [Ali Smith](https://github.com/40thieves), [Ed Poole](https://github.com/edpoole) and [Robb Lewis](https://github.com/rmlewisuk).
 
